@@ -1,0 +1,9 @@
+{
+  "name": "@oz/package-api",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@oz/web": "^0.0.1"
+  }
+}
