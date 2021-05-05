@@ -1,4 +1,4 @@
-import Api from '@oz/web/src/api/operations'
+import { Api } from '@mfkn/oz-web/src/api/api'
 
 import { call } from './utils/call'
 

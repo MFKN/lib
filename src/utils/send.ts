@@ -1,5 +1,5 @@
-import { Api } from '@oz/web/src/api/types'
-import makeEventTarget from '@oz/web/src/api/utils/event-target'
+import { Api } from '@mfkn/oz-web/src/api/api'
+import makeEventTarget from '@mfkn/oz-web/src/api/utils/event-target'
 
 /**
  * Call a host API function

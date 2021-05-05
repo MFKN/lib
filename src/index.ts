@@ -1,32 +1,28 @@
-import type { ApiResolverOptions, ApiMessageData, InstalledPackage } from '@oz/web'
+import type { ApiResolverOptions, ApiMessageData } from '@mfkn/oz-web/src/api/api'
 
-import { Resolvers as PackageResolvers } from './package'
-import { Resolvers as ProxyResolvers } from './proxy'
+// import { Resolvers as PackageResolvers } from './package'
+// import { Resolvers as ProxyResolvers } from './proxy'
 import './click'
 
 export type {
   ApiResolverOptions,
-  ApiMessageData,
-  InstalledPackage
+  ApiMessageData
 }
-
-export {
-  onPackageIndexing,
-  onPackageFetching
-} from './package'
 
 export { fetch } from './proxy'
 export { torrent } from './torrent'
 
+export { default as events } from './events'
+
 const resolvers = {
-  ...PackageResolvers,
-  ...ProxyResolvers
+  // ...PackageResolvers,
+  // ...ProxyResolvers
 }
 
 // todo: Rework the listener interface to be able to run the listener filters directly from the host to reduce latency & memory usage
 
 if (window.parent !== window) {
-  window.addEventListener('message', async function (ev) {
+  window.addEventListener('message', async ev => {
     const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
 
     if (
