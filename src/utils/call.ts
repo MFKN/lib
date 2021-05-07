@@ -4,7 +4,7 @@ import { ApiType, Resolvers, Await } from '@mfkn/oz-web/lib/api'
  * Call a host API function and get its return value back
  */
 export const call =
-  <T extends ApiType>(type: T, data?: any, transfer: Transferable[] = []): Promise<Await<ReturnType<Resolvers[T]>>> =>
+  <T extends ApiType>(type: T, data?: Parameters<Resolvers[T]>[0]['data'], transfer: Transferable[] = []): Promise<Await<ReturnType<Resolvers[T]>>> =>
     new Promise(resolve => {
       const { port1, port2 } = new MessageChannel()
 
