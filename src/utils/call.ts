@@ -1,34 +1,35 @@
-import { Api } from '@mfkn/oz-web/src/api/api'
+import { ApiType, Resolvers, Await } from '@mfkn/oz-web/lib/api'
 
 /**
  * Call a host API function and get its return value back
  */
-export const call = <T = any>(type: Api, data?: any, transfer: Transferable[] = []): Promise<T> =>
-  new Promise(resolve => {
-    const { port1, port2 } = new MessageChannel()
+export const call =
+  <T extends ApiType>(type: T, data?: any, transfer: Transferable[] = []): Promise<Await<ReturnType<Resolvers[T]>>> =>
+    new Promise(resolve => {
+      const { port1, port2 } = new MessageChannel()
 
-    port1.addEventListener(
-      'message',
-      ({ data }) => {
-        resolve(data)
-        port1.close()
-        port2.close()
-      },
-      { once: true }
-    )
-    port1.start()
+      port1.addEventListener(
+        'message',
+        ({ data }) => {
+          resolve(data)
+          port1.close()
+          port2.close()
+        },
+        { once: true }
+      )
+      port1.start()
 
-    window.parent.postMessage(
-      {
-        source: 'oz-package-api',
-        type,
-        data,
-        port: port2
-      },
-      '*',
-      [port2, ...transfer ?? []]
-    )
-  })
+      window.parent.postMessage(
+        {
+          source: 'oz-package-api',
+          type,
+          data,
+          port: port2
+        },
+        '*',
+        [port2, ...transfer ?? []]
+      )
+    })
 
 /**
  * Call a package function and get its return value back

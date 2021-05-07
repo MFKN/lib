@@ -1,10 +1,10 @@
-import { Api } from '@mfkn/oz-web/src/api/api'
+import { ApiType } from '@mfkn/oz-web/lib'
 import makeEventTarget from '@mfkn/oz-web/src/api/utils/event-target'
 
 /**
  * Call a host API function
  */
-export const makeEventChannelCall = (type: Api, data?: any, transfer: Transferable[] = []) => {
+export const makeEventChannelCall = (type: ApiType, data?: any, transfer: Transferable[] = []) => {
   const events = makeEventTarget()
   const { port1, port2 } = new MessageChannel()
 
