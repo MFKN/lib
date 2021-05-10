@@ -6,6 +6,7 @@
   "devDependencies": {
     "@apollo/client": "^3.3.16",
     "@rollup/plugin-typescript": "^8.2.1",
+    "parcel": "^2.0.0-nightly.653",
     "rollup": "^2.46.0",
     "typescript": "^4.2.4"
   },
@@ -13,6 +14,14 @@
     "build2": "rollup -c",
     "dev2": "rollup -c -w",
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "dev-3": "parcel build ./src/index.ts"
+  },
+  "lib": "dist/index.js",
+  "targets": {
+    "lib": {
+      "isLibrary": true,
+      "includeNodeModules": ["@mfkn/oz-web"]
+    }
   }
 }

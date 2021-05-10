@@ -4,7 +4,7 @@
     "module": "ESNext",
     "lib": ["dom", "esnext"],
     "noImplicitAny": false,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "sourceMap": true,
     "declaration": true,
     "moduleResolution": "node",
