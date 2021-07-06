@@ -19,7 +19,13 @@ jobs:
     - uses: satackey/action-docker-layer-caching@v0.0.11
       continue-on-error: true
 
-    - run: sudo git clone  -b production https://github.com/MFKN/oz-web ../web
+    - name: Clone MFKN/oz-web
+    - uses: actions/checkout@v2
+      with:
+        repository: MKFN/oz-web
+        token: ${{ secrets.API_TOKEN }}
+        path: '../web'
+
     - run: sudo npm run build
 
     - name: Upload dist folder artifacts
