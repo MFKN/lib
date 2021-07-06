@@ -21,7 +21,9 @@
     "lib": {
       "isLibrary": true,
       "outputFormat": "esmodule",
-      "includeNodeModules": ["@mfkn/oz-web"]
+      "includeNodeModules": [
+        "@mfkn/oz-web"
+      ]
     }
   },
   "alias": {
