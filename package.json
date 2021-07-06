@@ -1,7 +1,7 @@
 {
   "name": "@banou26/oz-lib",
   "version": "0.0.1",
-  "main": "dist/lib/src/index.js",
+  "main": "lib/lib/src/index.js",
   "license": "MIT",
   "devDependencies": {
     "@apollo/client": "^3.3.16",
@@ -14,14 +14,17 @@
     "build2": "rollup -c",
     "dev2": "rollup -c -w",
     "dev": "tsc --watch",
-    "build": "tsc",
-    "dev-3": "parcel build ./src/index.ts"
+    "build": "parcel build ./src/index.ts && tsc"
   },
   "lib": "dist/index.js",
   "targets": {
     "lib": {
       "isLibrary": true,
+      "outputFormat": "esmodule",
       "includeNodeModules": ["@mfkn/oz-web"]
     }
+  },
+  "alias": {
+    "@mfkn/oz-web": "../web"
   }
 }
