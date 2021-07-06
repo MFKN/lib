@@ -1,4 +1,4 @@
-import { ApiType } from '@mfkn/oz-web/lib'
+import type { ApiType } from '@mfkn/oz-web/src/api/api'
 
 type pull = (
   type: ApiType,
