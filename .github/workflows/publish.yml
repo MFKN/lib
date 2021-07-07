@@ -25,6 +25,8 @@ jobs:
     - name: Get dependencies for oz-web
       working-directory: ./web
       run: npm ci
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
@@ -36,6 +38,8 @@ jobs:
       run: |
         npm ci
         npm run build
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
 
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
