@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
 
-    - name: Use Node.js 14.x
+    - name: Use Node.js 16.x
       uses: actions/setup-node@v1
       with:
-        node-version: 14.x
+        node-version: 16.x
 
     - name: Clone MFKN/oz-web
       uses: actions/checkout@v2
