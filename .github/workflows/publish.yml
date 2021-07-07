@@ -22,7 +22,7 @@ jobs:
     - name: Clone MFKN/oz-web
       uses: actions/checkout@v2
       with:
-        repository: MKFN/oz-web
+        repository: MFKN/oz-web
         token: ${{ secrets.API_TOKEN }}
         path: './web'
 
