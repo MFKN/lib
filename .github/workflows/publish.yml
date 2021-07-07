@@ -24,7 +24,7 @@ jobs:
 
     - name: Get dependencies for oz-web
       working-directory: ./web
-      run: npm ci
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.API_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ~/.npmrc && npm ci --ignore-scripts
       env:
         NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
