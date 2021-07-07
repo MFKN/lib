@@ -29,7 +29,7 @@ jobs:
 
     - run: cd ${{ env.GITHUB_WORKSPACE }}
 
-    - run: sudo npm run build
+    - run: npm run build
 
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
