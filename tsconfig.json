@@ -7,12 +7,14 @@
     "outDir": "./lib",
     "sourceMap": true,
     "declaration": true,
+    "emitDeclarationOnly": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
       "@mfkn/oz-web/*": ["../web/*"]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
