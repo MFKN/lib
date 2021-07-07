@@ -9,7 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
+    - run: pwd
+
     - uses: actions/checkout@v2
+      path: 'oz-lib'
+
+    - run: cd oz-lib
+
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
@@ -19,22 +25,19 @@ jobs:
     - run: pwd
     - run: ls
 
+    - run: cd ../
+
     - name: Clone MFKN/oz-web
       uses: actions/checkout@v2
       with:
         repository: MFKN/oz-web
         token: ${{ secrets.API_TOKEN }}
-        path: './web'
+        path: 'web'
 
     - run: pwd
     - run: ls
 
-    - run: mv ./web ../web
-
-    - run: pwd
-    - run: ls
-
-    - run: cd ../web
+    - run: cd web
 
     - run: pwd
     - run: ls
@@ -44,7 +47,7 @@ jobs:
     - run: pwd
     - run: ls
 
-    - run: cd ${{ env.GITHUB_WORKSPACE }}
+    - run: cd ../oz-lib
 
     - run: pwd
     - run: ls
