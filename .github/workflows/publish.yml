@@ -24,7 +24,9 @@ jobs:
       with:
         repository: MKFN/oz-web
         token: ${{ secrets.API_TOKEN }}
-        path: '../web'
+        path: './web'
+
+    - run: mv ./web ../web
 
     - run: sudo npm run build
 
