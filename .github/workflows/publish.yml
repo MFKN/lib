@@ -9,25 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-    - run: pwd
-
-    - name: Clone banou26/oz-lib
-      uses: actions/checkout@v2
-      with:
-        path: 'oz-lib'
-
-    - run: cd oz-lib
 
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: npm ci
-
-    - run: pwd
-    - run: ls
-
-    - run: cd ../
 
     - name: Clone MFKN/oz-web
       uses: actions/checkout@v2
@@ -36,31 +22,26 @@ jobs:
         token: ${{ secrets.API_TOKEN }}
         path: 'web'
 
-    - run: pwd
-    - run: ls
+    - name: Get dependencies for oz-web
+      working-directory: ./web
+      run: npm ci
 
-    - run: cd web
+    - name: Clone banou26/oz-lib
+      uses: actions/checkout@v2
+      with:
+        path: 'oz-lib'
 
-    - run: pwd
-    - run: ls
-
-    - run: npm ci
-
-    - run: pwd
-    - run: ls
-
-    - run: cd ../oz-lib
-
-    - run: pwd
-    - run: ls
-
-    - run: npm run build
+    - name: Get dependencies for oz-lib
+      working-directory: ./oz-lib
+      run: |
+        npm ci
+        npm run build
 
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
       with:
           name: dist
-          path: "dist/*"
+          path: "oz-lib/dist/*"
 
   package:
     needs: [build]
