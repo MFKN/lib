@@ -16,6 +16,9 @@ jobs:
         node-version: 14.x
     - run: npm ci
 
+    - run: pwd
+    - run: ls
+
     - name: Clone MFKN/oz-web
       uses: actions/checkout@v2
       with:
@@ -23,11 +26,28 @@ jobs:
         token: ${{ secrets.API_TOKEN }}
         path: './web'
 
+    - run: pwd
+    - run: ls
+
     - run: mv ./web ../web
+
+    - run: pwd
+    - run: ls
+
     - run: cd ../web
+
+    - run: pwd
+    - run: ls
+
     - run: npm ci
 
+    - run: pwd
+    - run: ls
+
     - run: cd ${{ env.GITHUB_WORKSPACE }}
+
+    - run: pwd
+    - run: ls
 
     - run: npm run build
 
