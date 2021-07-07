@@ -11,8 +11,10 @@ jobs:
     steps:
     - run: pwd
 
-    - uses: actions/checkout@v2
-      path: 'oz-lib'
+    - name: Clone banou26/oz-lib
+      uses: actions/checkout@v2
+      with:
+        path: 'oz-lib'
 
     - run: cd oz-lib
 
