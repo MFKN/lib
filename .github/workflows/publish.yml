@@ -26,7 +26,7 @@ jobs:
       working-directory: ./web
       run: npm ci
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
         npm ci
         npm run build
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
