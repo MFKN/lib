@@ -27,7 +27,7 @@ jobs:
     - run: cd ../web
     - run: npm ci
 
-    - run: cd ${{ GITHUB_WORKSPACE }}
+    - run: cd ${{ env.GITHUB_WORKSPACE }}
 
     - run: sudo npm run build
 
