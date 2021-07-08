@@ -26,7 +26,7 @@ jobs:
 
     - name: Get dependencies for oz-web
       working-directory: ./web
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ~/.npmrc && ~/.npmrc > echo && npm ci --ignore-scripts
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ./.npmrc && ./.npmrc > echo && npm ci --ignore-scripts
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
