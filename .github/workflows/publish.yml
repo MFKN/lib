@@ -33,14 +33,14 @@ jobs:
     - run: pwd
     - run: ls
 
-    - run: cd web
+    - run: cd ./web
 
     - run: pwd
     - run: ls
 
     - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ./.npmrc
 
-    - run: ./.npmrc > echo
+    - run: echo "$(<.npmrc)"
 
     - run: pwd
     - run: ls
