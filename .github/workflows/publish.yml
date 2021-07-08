@@ -39,11 +39,11 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
-    - name: Upload dist folder artifacts
+    - name: Upload lib folder artifacts
       uses: actions/upload-artifact@v2
       with:
-          name: dist
-          path: "oz-lib/dist/*"
+        name: lib
+        path: "oz-lib/lib/*"
 
   package:
     needs: [build]
@@ -55,11 +55,11 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Download dist folder artifacts
+      - name: Download lib folder artifacts
         uses: actions/download-artifact@v2
         with:
-            name: dist
-            path: ./dist
+            name: lib
+            path: ./lib
 
       - run: npm version prerelease --preid=ci-$GITHUB_RUN_ID --no-git-tag-version
       - run: npm pack
