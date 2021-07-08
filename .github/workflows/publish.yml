@@ -69,9 +69,10 @@ jobs:
 
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
+      working-directory: ./oz-lib
       with:
           name: dist
-          path: "oz-lib/dist/*"
+          path: "dist/*"
 
   package:
     needs: [build]
