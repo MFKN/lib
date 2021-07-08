@@ -42,8 +42,8 @@ jobs:
     - name: Upload lib folder artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: lib
-        path: "oz-lib/lib/*"
+          name: lib
+          path: "lib/*"
 
   package:
     needs: [build]
