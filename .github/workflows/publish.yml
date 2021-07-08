@@ -10,15 +10,18 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
 
-    - run: |
-      pwd
-      ls
+    - name: test
+      run: |
+        pwd
+        ls
 
     - run: cd ${{ env.GITHUB_WORKSPACE }}
 
-    - run: |
-      pwd
-      ls
+
+    - name: test
+      run: |
+        pwd
+        ls
 
     - name: Use Node.js 16.x
       uses: actions/setup-node@v1
@@ -32,22 +35,24 @@ jobs:
         token: ${{ secrets.API_TOKEN }}
         path: 'web'
 
-    - run: |
-      pwd
-      ls
-      cd ./web
-      pwd
-      ls
-      echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ./.npmrc
-      echo "$(<.npmrc)"
-      pwd
-      ls
-      npm ci --ignore-scripts
-      cd ..
+    - name: test
+      run: |
+        pwd
+        ls
+        cd ./web
+        pwd
+        ls
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com/" > ./.npmrc
+        echo "$(<.npmrc)"
+        pwd
+        ls
+        npm ci --ignore-scripts
+        cd ..
 
-    - run: |
-      pwd
-      ls
+    - name: test
+      run: |
+        pwd
+        ls
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
