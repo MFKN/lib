@@ -42,10 +42,10 @@ jobs:
         cd ./web
         pwd
         ls
-        echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com" > ./.npmrc
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com" > .npmrc
         echo "$(<.npmrc)"
         pwd
-        ls
+        ls -a
         npm ci --ignore-scripts
         cd ..
 
