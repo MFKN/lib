@@ -17,7 +17,7 @@
     "build2": "rollup -c",
     "dev2": "rollup -c -w",
     "dev": "tsc --watch",
-    "build": "parcel build ./src/index.ts && tsc"
+    "build": "parcel build ./src/index.ts & parcel build ./src/index.ts && tsc"
   },
   "targets": {
     "main": {
