@@ -36,8 +36,6 @@ jobs:
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
-      with:
-        path: 'oz-lib'
 
     - name: Get dependencies for oz-lib
       working-directory: ./oz-lib
