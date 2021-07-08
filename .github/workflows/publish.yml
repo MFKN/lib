@@ -7,10 +7,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Use Node.js 16.x
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: 16.x
 
@@ -21,18 +21,13 @@ jobs:
         token: ${{ secrets.API_TOKEN }}
         path: 'web'
 
-    - name: test
+    - name: Setup .npmrc auth
       run: |
         cd ./web
         echo -e "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com" > .npmrc
-        echo "$(<.npmrc)"
         npm ci --ignore-scripts
         cd ..
-
-    - name: test
-      run: |
-        pwd
-        ls
+        mv web ../web
 
     - name: Clone banou26/oz-lib
       uses: actions/checkout@v2
@@ -44,17 +39,6 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
-    - name: test
-      run: |
-        pwd
-        ls
-        cd oz-lib
-        pwd
-        ls
-        cd dist
-        pwd
-        ls
-
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -63,11 +47,11 @@ jobs:
 
   package:
     needs: [build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
 
@@ -89,14 +73,14 @@ jobs:
   publish:
     name: "Publish to GitHub Packages"
     needs: [package]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.repository_owner == 'Banou26'
     steps:
     - name: Download package artifact
       uses: actions/download-artifact@v2
       with:
           name: package
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
       with:
         node-version: 16.x
         registry-url: https://npm.pkg.github.com/
