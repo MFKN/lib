@@ -9,20 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-
-    - name: test
-      run: |
-        pwd
-        ls
-
-    - run: cd ${{ env.GITHUB_WORKSPACE }}
-
-
-    - name: test
-      run: |
-        pwd
-        ls
-
     - name: Use Node.js 16.x
       uses: actions/setup-node@v1
       with:
@@ -37,15 +23,9 @@ jobs:
 
     - name: test
       run: |
-        pwd
-        ls
         cd ./web
-        pwd
-        ls
         echo -e "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_TOKEN }}\n@banou26:registry=https://npm.pkg.github.com" > .npmrc
         echo "$(<.npmrc)"
-        pwd
-        ls -a
         npm ci --ignore-scripts
         cd ..
 
@@ -67,12 +47,22 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
+    - name: test
+      run: |
+        pwd
+        ls
+        cd oz-lib
+        pwd
+        ls
+        cd dist
+        pwd
+        ls
+
     - name: Upload dist folder artifacts
       uses: actions/upload-artifact@v2
-      working-directory: ./oz-lib
       with:
           name: dist
-          path: "dist/*"
+          path: "oz-lib/dist/*"
 
   package:
     needs: [build]
