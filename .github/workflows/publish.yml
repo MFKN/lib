@@ -36,8 +36,8 @@ jobs:
       run: |
         npm ci
         npm run build
-        rm lib/lib
-        rm lib/web
+        rm -r lib/oz-lib
+        rm -r lib/web
       env:
         NODE_AUTH_TOKEN: ${{ secrets.API_TOKEN }}
 
