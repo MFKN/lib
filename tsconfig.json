@@ -6,8 +6,6 @@
     "noImplicitAny": false,
     "outDir": "./lib",
     "sourceMap": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
