@@ -3,8 +3,12 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["dom", "esnext"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "composite": false,
     "noImplicitAny": false,
     "outDir": "./lib",
+    "outFile": "./lib/index",
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -13,7 +17,7 @@
       "@mfkn/oz-web/*": ["../web/*"]
     },
     "skipLibCheck": true,
-    "types": [],
+    "types": []
 
   },
   "include": ["src/**/*"],

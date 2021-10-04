@@ -7,3 +7,4 @@
 // export const getState = () => call(Api.GET_STATE)
 
 // export const setState = state => call(Api.SET_STATE, state)
+export {}
