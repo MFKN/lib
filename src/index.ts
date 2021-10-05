@@ -1,4 +1,5 @@
 import type { ApiResolverOptions, ApiMessageData } from '@mfkn/oz-web/src/api/api'
+import { proxyFetch } from './proxy'
 
 // import { Resolvers as PackageResolvers } from './package'
 // import { Resolvers as ProxyResolvers } from './proxy'
@@ -9,7 +10,7 @@ export type {
   ApiMessageData
 }
 
-export { fetch } from './proxy'
+export { fetch, proxyFetch } from './proxy'
 export { torrent } from './torrent'
 
 export { default as events } from './events'
@@ -26,7 +27,6 @@ const resolvers = {
 if (window.parent !== window) {
   window.addEventListener('message', async ev => {
     const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
-
     if (
       !ev.source
       || messageData?.source !== 'oz-package-api'
@@ -39,3 +39,17 @@ if (window.parent !== window) {
     resolver({ port, data })
   })
 }
+
+navigator.serviceWorker.addEventListener('message', ev => {
+  const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
+  console.log('ev', ev)
+  if (
+    !ev.source
+    || messageData?.source !== 'oz-service-worker-api'
+    || origin !== location.origin
+  ) return
+  if (messageData?.type) {
+    const { data: { input, init }, port } = messageData
+    proxyFetch(input, init).then(res => port.postMessage(res))
+  }
+})
