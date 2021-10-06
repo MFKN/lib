@@ -42,7 +42,6 @@ if (window.parent !== window) {
 
 navigator.serviceWorker.addEventListener('message', ev => {
   const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
-  console.log('ev', ev)
   if (
     !ev.source
     || messageData?.source !== 'oz-service-worker-api'
