@@ -15,7 +15,7 @@ export { torrent } from './torrent'
 
 export { default as events } from './events'
 
-export { Api } from '@mfkn/oz-web/src/api/api'
+export { Api } from '@mfkn/oz-web/src/api/api.ts'
 
 const resolvers = {
   // ...PackageResolvers,
