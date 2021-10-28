@@ -10,7 +10,7 @@ export type {
   ApiMessageData
 }
 
-export { fetch, proxyFetch } from './proxy'
+export { fetch, proxyFetch, evalFetch } from './proxy'
 export { torrent } from './torrent'
 
 export { default as events } from './events'
