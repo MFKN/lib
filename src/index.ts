@@ -4,6 +4,7 @@ import { proxyFetch } from './proxy'
 // import { Resolvers as PackageResolvers } from './package'
 // import { Resolvers as ProxyResolvers } from './proxy'
 import './click'
+import './resize'
 
 export type {
   ApiResolverOptions,
