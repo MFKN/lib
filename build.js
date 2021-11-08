@@ -11,7 +11,6 @@ esbuild.build({
   minify: process.argv.includes('-m') || process.argv.includes('--minify'),
   plugins: [
     alias({
-      '@mfkn/oz-web': path.resolve('../web/lib/api.js'),
       'zlib': path.resolve('./node_modules/browserify-zlib/lib/index.js'),
       'stream': path.resolve('./node_modules/stream-browserify/index.js'),
       'crypto': path.resolve('./node_modules/crypto-browserify/index.js'),

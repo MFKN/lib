@@ -1,4 +1,4 @@
-import { Api } from '@mfkn/oz-web/lib'
+import { Api } from '@mfkn/oz-web/lib/api/api'
 import { makeEventChannelCall } from '../utils/send'
 
 interface TorrentOptions {

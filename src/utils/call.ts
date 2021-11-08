@@ -1,4 +1,4 @@
-import { ApiType, Resolvers, Await } from '@mfkn/oz-web/lib/api'
+import type { ApiType, Resolvers, Await } from '@mfkn/oz-web/lib/api'
 
 /**
  * Call a host API function and get its return value back
