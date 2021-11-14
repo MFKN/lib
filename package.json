@@ -1,5 +1,5 @@
 {
-  "name": "@banou26/oz-lib",
+  "name": "@mfkn/fkn-lib",
   "version": "0.0.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -41,6 +41,6 @@
     "dev": "concurrently \"npm run build-watch\" \"npm run type-check-watch\""
   },
   "dependencies": {
-    "@mfkn/oz-web": "file:../web"
+    "@mfkn/fkn-web": "file:../web"
   }
 }

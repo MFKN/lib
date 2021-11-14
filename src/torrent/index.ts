@@ -1,4 +1,3 @@
-import { Api } from '@mfkn/oz-web/lib/api/api'
 import { makeEventChannelCall } from '../utils/send'
 
 interface TorrentOptions {
@@ -6,10 +5,9 @@ interface TorrentOptions {
 }
 
 export const torrent = (magnet: string | TorrentOptions) => {
-  const { send, events } = makeEventChannelCall(Api.TORRENT, { magnet })
-  console.log('package torrent', Api.TORRENT)
+  // const { send, events } = makeEventChannelCall('TORRENT', { magnet })
   
   return {
-    unsubscribe: () => send('remove')
+    // unsubscribe: () => send('remove')
   }
 }

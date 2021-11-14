@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
     "emitDeclarationOnly": true,
     "composite": false,
@@ -11,9 +11,10 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@mfkn/oz-web/*": ["../web/*"]
+      "@mfkn/fkn-web": ["../web/src/index"]
     },
     "skipLibCheck": true,
     "types": []

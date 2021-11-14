@@ -1,10 +1,10 @@
-import type { ApiResolverOptions, ApiMessageData } from '@mfkn/oz-web/src/api/api'
+import type { ApiResolverOptions, ApiMessageData } from '@mfkn/fkn-web'
+
 import { proxyFetch } from './proxy'
+import './location'
 
 // import { Resolvers as PackageResolvers } from './package'
 // import { Resolvers as ProxyResolvers } from './proxy'
-import './click'
-import './resize'
 
 export type {
   ApiResolverOptions,
@@ -15,8 +15,6 @@ export { fetch, proxyFetch, evalFetch } from './proxy'
 export { torrent } from './torrent'
 
 export { default as events } from './events'
-
-export { Api } from '@mfkn/oz-web/src/api/api'
 
 const resolvers = {
   // ...PackageResolvers,

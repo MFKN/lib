@@ -1,4 +1,4 @@
-import makeEventTarget from '@mfkn/oz-web/lib/api/utils/event-target'
+import { makeEventTarget } from '@mfkn/fkn-web'
 
 export default makeEventTarget()
 

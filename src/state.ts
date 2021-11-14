@@ -1,4 +1,4 @@
-// import { Api } from '@mfkn/oz-web/src/api/api'
+// import { Api } from '@mfkn/fkn-web/src/api/api'
 // import { call } from './utils/call'
 // import pull from './utils/pull'
 

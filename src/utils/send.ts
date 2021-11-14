@@ -1,10 +1,10 @@
-import type { ApiType } from '@mfkn/oz-web/lib'
-import makeEventTarget from '@mfkn/oz-web/src/api/utils/event-target'
+import type { Resolvers } from '@mfkn/fkn-web/lib'
+import makeEventTarget from '@mfkn/fkn-web/src/api/utils/event-target'
 
 /**
  * Call a host API function
  */
-export const makeEventChannelCall = (type: ApiType, data?: any, transfer: Transferable[] = []) => {
+export const makeEventChannelCall = (type: keyof Resolvers, data?: any, transfer: Transferable[] = []) => {
   const events = makeEventTarget()
   const { port1, port2 } = new MessageChannel()
 

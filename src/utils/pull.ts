@@ -1,7 +1,7 @@
-import type { ApiType } from '@mfkn/oz-web/lib'
+import type { Resolvers } from '@mfkn/fkn-web'
 
 type pull = (
-  type: ApiType,
+  type: keyof Resolvers,
   data?: any,
   transfer?: Transferable[]
 ) => AsyncGenerator

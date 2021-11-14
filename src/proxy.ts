@@ -1,10 +1,8 @@
-import { Api } from '@mfkn/oz-web/lib/api/api'
-
 import { call } from './utils/call'
 
-export const fetch = async (input: RequestInfo, init?: RequestInit) => {
-  const { body, ...rest } = await call(Api.RAW_FETCH, { input, init })
-
+export const fetch = async (input: RequestInfo, init?: RequestInit & { proxyCache?: number | string, proxyDelay?: number | string }) => {
+  const { body, ...rest } = await call('FETCH', { input, init })
+  console.log('hmm', rest)
   return new Response(
     new Blob([new Uint8Array(body)]),
     {
@@ -18,7 +16,7 @@ export const fetch = async (input: RequestInfo, init?: RequestInit) => {
 }
 
 export const proxyFetch = async (input: RequestInfo, init?: RequestInit) => {
-  const { body, ...rest } = await call(Api.RAW_FETCH, { input, init })
+  const { body, ...rest } = await call('FETCH', { input, init })
 
   return {
     ...rest,
@@ -32,7 +30,7 @@ export const proxyFetch = async (input: RequestInfo, init?: RequestInit) => {
 
 export const evalFetch = async (input: RequestInfo, init?: RequestInit, args?: any) => {
   console.log('AAAAAAAAAAAAAAAAA')
-  const { body, ...rest } = await call(Api.EVAL_FETCH, { input, init, arguments: args })
+  const { body, ...rest } = await call('EVAL_FETCH', { input, init, arguments: args })
   console.log('AAAAAAAAAAAAAAAAA')
 
   return {
