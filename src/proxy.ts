@@ -1,6 +1,11 @@
 import { call } from './utils/call'
 
-export const fetch = async (input: RequestInfo, init?: RequestInit & { proxyCache?: number | string, proxyDelay?: number | string }) => {
+interface fetchInitOptions {
+  proxyCache?: string
+  proxyDelay?: string
+}
+
+export const fetch = async (input: RequestInfo, init?: RequestInit & fetchInitOptions) => {
   const { body, ...rest } = await call('FETCH', { input, init })
   console.log('hmm', rest)
   return new Response(
@@ -13,32 +18,4 @@ export const fetch = async (input: RequestInfo, init?: RequestInit & { proxyCach
       }
     }
   )
-}
-
-export const proxyFetch = async (input: RequestInfo, init?: RequestInit) => {
-  const { body, ...rest } = await call('FETCH', { input, init })
-
-  return {
-    ...rest,
-    headers: {
-      ...rest.headers,
-      setCookie: rest.headers['set-cookie']
-    },
-    body: new Blob([new Uint8Array(body)])
-  }
-}
-
-export const evalFetch = async (input: RequestInfo, init?: RequestInit, args?: any) => {
-  console.log('AAAAAAAAAAAAAAAAA')
-  const { body, ...rest } = await call('EVAL_FETCH', { input, init, arguments: args })
-  console.log('AAAAAAAAAAAAAAAAA')
-
-  return {
-    ...rest,
-    headers: {
-      ...rest.headers,
-      setCookie: rest.headers['set-cookie']
-    },
-    body: new Blob([new Uint8Array(body)])
-  }
 }
