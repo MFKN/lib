@@ -1,4 +1,4 @@
-import type { Resolvers } from '@mfkn/fkn-web/lib'
+import type { Resolvers } from '@mfkn/fkn-web'
 import makeEventTarget from '@mfkn/fkn-web/src/api/utils/event-target'
 
 /**

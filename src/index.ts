@@ -1,7 +1,8 @@
 import type { ApiResolverOptions, ApiMessageData } from '@mfkn/fkn-web'
 
-import { proxyFetch } from './proxy'
+// import { proxyFetch } from './proxy'
 import './location'
+import resolvers from './resolvers'
 
 // import { Resolvers as PackageResolvers } from './package'
 // import { Resolvers as ProxyResolvers } from './proxy'
@@ -11,15 +12,16 @@ export type {
   ApiMessageData
 }
 
-export { fetch, proxyFetch, evalFetch } from './proxy'
+export { fetch } from './proxy'
+// export { fetch, proxyFetch, evalFetch } from './proxy'
 export { torrent } from './torrent'
 
 export { default as events } from './events'
 
-const resolvers = {
-  // ...PackageResolvers,
-  // ...ProxyResolvers
-}
+// const resolvers = {
+//   // ...PackageResolvers,
+//   // ...ProxyResolvers
+// }
 
 // todo: Rework the listener interface to be able to run the listener filters directly from the host to reduce latency & memory usage
 
@@ -29,12 +31,11 @@ if (window.parent !== window) {
     if (
       !ev.source
       || messageData?.source !== 'oz-package-api'
-      || origin !== 'null'
+      || origin !== process.env.WEB_ORIGIN
     ) return
 
     const { type, data, port } = messageData
     const resolver = resolvers[type]
-
     resolver({ port, data })
   })
 }
@@ -48,6 +49,16 @@ navigator.serviceWorker.addEventListener('message', ev => {
   ) return
   if (messageData?.type) {
     const { data: { input, init }, port } = messageData
-    proxyFetch(input, init).then(res => port.postMessage(res))
+    fetch(input, init).then(res => port.postMessage(res))
   }
 })
+
+export {
+  resolvers
+}
+
+type Resolvers = typeof resolvers
+
+export type {
+  Resolvers
+}
