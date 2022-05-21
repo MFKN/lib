@@ -1,15 +1,17 @@
 import type { ApiResolverOptions } from '@mfkn/fkn-web'
+import { makeCallListener } from 'osra'
 
 import { call } from './utils'
-import makeApiPromise from './utils/promise'
+// import makeApiPromise from './utils/promise'
 
 window.addEventListener(
   'popstate',
   () => call('LOCATION_CHANGE', { url: location.toString() })
 )
 
-const locationChange = makeApiPromise(
-  async ({ data: { path } }: ApiResolverOptions<{ path: string }>) => {
+const locationChange = makeCallListener(
+  async ({ path }: { path: string }, extra) => {
+    console.log('lib receive locationChange', path)
     history.pushState(undefined, '', path)
     window.dispatchEvent(new Event('popstate'))
   }
