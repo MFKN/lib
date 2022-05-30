@@ -3,6 +3,8 @@ import type { ApiResolverOptions, ApiMessageData } from '@mfkn/fkn-web'
 // import { proxyFetch } from './proxy'
 import './location'
 import resolvers from './resolvers'
+import { registerListener, makeCallListener } from 'osra'
+import { fetch } from './proxy'
 
 // import { Resolvers as PackageResolvers } from './package'
 // import { Resolvers as ProxyResolvers } from './proxy'
@@ -40,17 +42,44 @@ if (window.parent !== window) {
   })
 }
 
-navigator.serviceWorker.addEventListener('message', ev => {
-  const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
-  if (
-    !ev.source
-    || messageData?.source !== 'oz-service-worker-api'
-    || origin !== location.origin
-  ) return
-  if (messageData?.type) {
-    const { data: { input, init }, port } = messageData
-    fetch(input, init).then(res => port.postMessage(res))
-  }
+// navigator.serviceWorker.addEventListener('message', ev => {
+//   const { data: messageData, origin }: { data: ApiMessageData } & Omit<MessageEvent, 'data'> = ev
+//   if (
+//     !ev.source
+//     || messageData?.source !== 'oz-service-worker-api'
+//     || origin !== location.origin
+//   ) return
+//   if (messageData?.type) {
+//     const { data: { input, init }, port } = messageData
+//     console.log('input, init', input, init)
+//     fetch(input, init).then(res => port.postMessage(res))
+//   }
+// })
+
+const serviceWorkerResolvers = {
+  FETCH: makeCallListener(async ({ input, init }: { input: RequestInfo, init?: RequestInit | undefined }) => {
+    const res = await fetch(input, init)
+
+    const ret = {
+      headers: [...res.headers.entries()],
+      ok: res.ok,
+      redirected: res.redirected,
+      status: res.status,
+      statusText: res.statusText,
+      type: res.type,
+      url: res.url,
+      body: res.body
+    }
+    return ret
+  }),
+  PROXY: makeCallListener(({ input, init }: { input: RequestInfo, init?: RequestInit | undefined }) => void console.log('lib PROXY fetch') || fetch(input, init))
+}
+
+export type ServiceWorkerResolvers = typeof serviceWorkerResolvers
+
+registerListener({
+  target: navigator.serviceWorker,
+  resolvers: serviceWorkerResolvers
 })
 
 export {
