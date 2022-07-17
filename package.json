@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "@mfkn/fkn-web": "file:../web",
-    "osra": "^0.0.3"
+    "osra": "^0.0.5"
   }
 }

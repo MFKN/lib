@@ -9,6 +9,12 @@ esbuild.build({
   outfile: './build/index.js',
   publicPath: '/',
   minify: process.argv.includes('-m') || process.argv.includes('--minify'),
+  define: {
+    // 'global': 'globalThis',
+    // 'process.platform': '"web"',
+    'process.env.WEB_ORIGIN': '"http://localhost:1234"',
+    'process.env.WEB_SANDBOX_ORIGIN': '"http://localhost:2345"'
+  },
   plugins: [
     alias({
       'zlib': path.resolve('./node_modules/browserify-zlib/lib/index.js'),
