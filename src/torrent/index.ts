@@ -1,13 +1,21 @@
-import { makeEventChannelCall } from '../utils/send'
+import type { Resolvers } from '@mfkn/fkn-web'
+import type ParseTorrentFile from 'parse-torrent-file'
 
-interface TorrentOptions {
-  uri: string
-}
+import { call } from '../utils/call'
 
-export const torrent = (magnet: string | TorrentOptions) => {
-  // const { send, events } = makeEventChannelCall('TORRENT', { magnet })
-  
+type RemoteFetchType =
+  Parameters<Resolvers['TORRENT']>[0]
+
+export const torrent = async (input: RemoteFetchType['input'], file: RemoteFetchType['file']) => {
+  const { torrentFile, torrent: { body, ...rest } } = await call('TORRENT', { input, file })
   return {
-    // unsubscribe: () => send('remove')
+    torrentFile: torrentFile as ParseTorrentFile.Instance,
+    torrent: new Response(
+      body,
+      {
+        ...rest,
+        headers: Object.fromEntries(rest.headers)
+      }
+    )
   }
 }
