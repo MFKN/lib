@@ -12,8 +12,10 @@ esbuild.build({
   define: {
     // 'global': 'globalThis',
     // 'process.platform': '"web"',
-    'process.env.WEB_ORIGIN': '"http://localhost:1234"',
-    'process.env.WEB_SANDBOX_ORIGIN': '"http://localhost:2345"'
+    // 'process.env.WEB_ORIGIN': '"https://dev.fkn.app"',
+    // 'process.env.WEB_SANDBOX_ORIGIN': '"https://sdbx.app"'
+    // 'process.env.WEB_ORIGIN': '"http://localhost:1234"',
+    // 'process.env.WEB_SANDBOX_ORIGIN': '"http://localhost:2345"'
   },
   plugins: [
     alias({

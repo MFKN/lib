@@ -37,8 +37,8 @@
     "type-check": "tsc --incremental",
     "type-check-watch": "tsc --watch --incremental",
     "build3": "parcel build ./src/index.ts ./src/service-worker/index.ts && tsc",
-    "build": "esbuild ./src/index.ts --format=esm --bundle --outfile=lib/index.js --define:process.env.WEB_ORIGIN=\\\"https://dev.fkn.app\\\" && npm run type-check",
-    "build-watch": "esbuild --watch ./src/index.ts --format=esm --bundle --outfile=lib/index.js --define:process.env.WEB_ORIGIN=\\\"http://localhost:1234\\\"",
+    "build": "esbuild ./src/index.ts --format=esm --bundle --outfile=lib/index.js && npm run type-check",
+    "build-watch": "esbuild --watch ./src/index.ts --format=esm --bundle --outfile=lib/index.js",
     "dev": "concurrently \"npm run build-watch\" \"npm run type-check-watch\""
   },
   "dependencies": {

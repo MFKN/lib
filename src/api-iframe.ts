@@ -1,5 +1,4 @@
-
-const WEB_ORIGIN = process.env.WEB_ORIGIN
+import { WEB_ORIGIN } from './globals'
 
 if (!WEB_ORIGIN) throw new Error('Missing WEB_ORIGIN environment variable')
 
