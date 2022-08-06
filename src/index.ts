@@ -11,7 +11,7 @@ export type {
 }
 
 export { fetch } from './proxy'
-export { torrent } from './torrent'
+export { torrent, torrentStatus } from './torrent'
 
 export { default as events } from './events'
 
