@@ -5,6 +5,7 @@ import { call } from './utils/call'
 interface fetchInitOptions {
   proxyCache?: string
   proxyDelay?: string
+  proxyRuntime?: boolean
 }
 
 type NativeFetch = typeof globalThis.fetch
