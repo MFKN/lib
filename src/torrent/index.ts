@@ -6,8 +6,15 @@ import { call } from '../utils/call'
 type RemoteTorrentType =
   Parameters<Resolvers['TORRENT']>[0]
 
-export const torrent = async (input: RemoteTorrentType['input'], file?: RemoteTorrentType['file']) => {
-  const { torrentFile, torrent: { body, ...rest } } = await call('TORRENT', { input, file })
+export type TorrentOptions = {
+  url: RemoteTorrentType['url']
+  fileIndex: number
+  offset?: number
+  end?: number
+}
+
+export const torrent = async ({ url, fileIndex, offset, end }: TorrentOptions) => {
+  const { torrentFile, torrent: { body, ...rest } } = await call('TORRENT', { url, fileIndex, offset, end })
   return {
     torrentFile: torrentFile as ParseTorrentFile.Instance,
     torrent: new Response(
@@ -23,6 +30,6 @@ export const torrent = async (input: RemoteTorrentType['input'], file?: RemoteTo
 type RemoteTorrentStatusType =
   Parameters<Resolvers['TORRENT_STATUS']>[0]
 
-export const torrentStatus = async (uri: string, file?: RemoteTorrentStatusType['file']) => {
-  return call('TORRENT_STATUS', { uri, file })
+export const torrentStatus = async (hash: string) => {
+  return call('TORRENT_STATUS', { hash })
 }

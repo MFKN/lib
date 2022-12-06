@@ -13,8 +13,6 @@ export type {
 export { fetch } from './proxy'
 export { torrent, torrentStatus } from './torrent'
 
-export { default as events } from './events'
-
 const serviceWorkerResolvers = {
   FETCH: makeCallListener(async ({ input, init }: { input: RequestInfo, init?: RequestInit | undefined }) => {
     const res = await fetch(input, init)
