@@ -11,4 +11,24 @@ const targetWindow =
 
 if (!targetWindow) throw new Error('No sandbox target window for osra calls found')
 
-export const call = _call<Resolvers>(targetWindow, { key: 'fkn-sandbox-api' })
+let _resolve, _reject
+const targetWindowIsReady = new Promise<void>((resolve, reject) => {
+  _resolve = resolve
+  _reject = reject
+})
+
+if (window.parent === window) {
+  iframe?.addEventListener('load', () => {
+    _resolve()
+  })
+} else {
+  _resolve()
+}
+
+const call = _call<Resolvers>(targetWindow, { key: 'fkn-sandbox-api' })
+
+const readyCall: typeof call = (...args) => targetWindowIsReady.then(() => call(...args))
+
+export {
+  readyCall as call
+}
