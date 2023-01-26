@@ -1,8 +1,7 @@
-import type { Await } from '..'
 
 export default
   <T extends (...args: any[]) => Promise<any>>(func: T) =>
-    async ({ port, ...rest }: Parameters<T>[0]): Promise<Await<ReturnType<T>>> => {
+    async ({ port, ...rest }: Parameters<T>[0]): Promise<Awaited<ReturnType<T>>> => {
       port.start()
       const result = await func({ port, ...rest })
       if (Array.isArray(result)) {

@@ -16,8 +16,12 @@
     "noUncheckedIndexedAccess": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "paths": {
+      "@mfkn/fkn-web": ["../web/src/index"]
+    },
     "skipLibCheck": true,
-    "types": [],
+    "types": []
+
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"],

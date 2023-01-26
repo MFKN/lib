@@ -1,7 +1,7 @@
-import type { ApiResolverOptions } from '@mfkn/fkn-web'
+// import type { ApiResolverOptions } from '@mfkn/fkn-web'
 import { makeCallListener } from 'osra'
 
-import { call } from './utils'
+// import { call } from './utils'
 // import makeApiPromise from './utils/promise'
 
 // window.addEventListener(

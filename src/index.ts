@@ -1,14 +1,7 @@
-import type { ApiResolverOptions, ApiMessageData } from '@mfkn/fkn-web'
-
 import './location'
 import resolvers from './resolvers'
 import { registerListener, makeCallListener } from 'osra'
 import { fetch } from './proxy'
-
-export type {
-  ApiResolverOptions,
-  ApiMessageData
-}
 
 export { fetch } from './proxy'
 export { torrent, torrentStatus } from './torrent'
@@ -29,7 +22,7 @@ const serviceWorkerResolvers = {
     }
     return ret
   }),
-  PROXY: makeCallListener(({ input, init }: { input: RequestInfo, init?: RequestInit | undefined }) => void console.log('lib PROXY fetch') || fetch(input, init))
+  PROXY: makeCallListener(({ input, init }: { input: RequestInfo, init?: RequestInit | undefined }) => fetch(input, init))
 }
 
 export type ServiceWorkerResolvers = typeof serviceWorkerResolvers
