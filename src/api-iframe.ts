@@ -1,3 +1,4 @@
+
 const WEB_ORIGIN = import.meta.env.VITE_WEB_ORIGIN
 if (!WEB_ORIGIN) throw new Error('Missing WEB_ORIGIN environment variable')
 

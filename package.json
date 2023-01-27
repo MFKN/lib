@@ -8,7 +8,7 @@
     "build"
   ],
   "devDependencies": {
-    "@mfkn/fkn-web": "github:mfkn/fkn-web",
+    "@mfkn/fkn-web": "github:MFKN/fkn-web",
     "concurrently": "^7.6.0",
     "parse-torrent-file": "^4.2.2",
     "typescript": "^4.9.3",

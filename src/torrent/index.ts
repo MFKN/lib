@@ -1,10 +1,6 @@
-import type { Resolvers } from '@mfkn/fkn-web'
-import type ParseTorrentFile from 'parse-torrent-file'
+// import type { TorrentOptions } from '@mfkn/fkn-web/src/api/torrent/torrent'
 
 import { call } from '../utils/call'
-
-type RemoteTorrentType =
-  Parameters<Resolvers['TORRENT']>[0]
 
 export type TorrentOptions =
   ({ url: string } | { arrayBuffer: ArrayBuffer }) &
@@ -25,9 +21,4 @@ export const torrent = async ({ fileIndex, offset, end, ...optionsRest }: Torren
   )
 }
 
-type RemoteTorrentStatusType =
-  Parameters<Resolvers['TORRENT_STATUS']>[0]
-
-export const torrentStatus = async (hash: string) => {
-  return call('TORRENT_STATUS', { hash })
-}
+export const torrentStatus = async (hash: string) => call('TORRENT_STATUS', { hash })

@@ -1,4 +1,4 @@
-import type { Resolvers } from '@mfkn/fkn-web'
+import type { SandboxApiResolvers } from '@mfkn/fkn-web/src/api/resolvers'
 
 import { call as _call } from 'osra'
 
@@ -25,7 +25,7 @@ if (window.parent === window) {
   _resolve()
 }
 
-const call = _call<Resolvers>(targetWindow, { key: 'fkn-sandbox-api' })
+const call = _call<SandboxApiResolvers>(targetWindow, { key: 'fkn-sandbox-api' })
 
 const readyCall: typeof call = (...args) => targetWindowIsReady.then(() => call(...args))
 
