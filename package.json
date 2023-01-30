@@ -4,9 +4,6 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "type": "module",
-  "files": [
-    "build"
-  ],
   "devDependencies": {
     "@mfkn/fkn-web": "github:MFKN/fkn-web",
     "concurrently": "^7.6.0",
