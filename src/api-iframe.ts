@@ -12,14 +12,27 @@ const createdIframe =
     ? document.createElement('iframe')
     : undefined
 
+export const iframe =
+  window.parent === window
+    ? foundIframe ?? createdIframe
+    : undefined
+
+let _resolve, _reject
+export const targetWindowIsReady = new Promise<void>((resolve, reject) => {
+  _resolve = resolve
+  _reject = reject
+})
+
+if (window.parent === window && !foundIframe) {
+  iframe?.addEventListener('load', () => {
+    _resolve()
+  })
+} else {
+  _resolve()
+}
+
 if (createdIframe) {
   createdIframe.src = `${WEB_ORIGIN}/sandbox-api`
   createdIframe.style.display = 'none'
   document.body.appendChild(createdIframe)
 }
-
-export default (
-  window.parent === window
-    ? foundIframe ?? createdIframe
-    : undefined
-)
