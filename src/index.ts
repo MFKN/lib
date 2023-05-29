@@ -7,3 +7,8 @@ export {
   torrent,
   torrentStatus
 } from './torrent'
+
+export {
+  requestAccess,
+  declarativeNetRequestUpdateDynamicRules
+} from './webextension'

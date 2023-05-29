@@ -5,16 +5,19 @@
   "types": "build/index.d.ts",
   "type": "module",
   "devDependencies": {
+    "@fkn/webextension": "file:../extension",
     "@mfkn/fkn-web": "github:MFKN/fkn-web",
     "concurrently": "^7.6.0",
     "parse-torrent-file": "^4.2.2",
     "typescript": "^4.9.3",
-    "vite": "^3.2.5"
+    "vite": "^3.2.5",
+    "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
     "dev": "concurrently \"vite build --watch --mode development\" \"tsc --watch\"",
     "build": "vite build && tsc",
     "build-dev": "vite build --mode development && tsc",
+    "dev-watch": "vite build --watch --mode development",
     "build-types": "tsc"
   },
   "dependencies": {
