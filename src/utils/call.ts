@@ -5,7 +5,7 @@ import { call as _call } from 'osra'
 
 import { iframe, targetWindowIsReady } from '../api-iframe'
 
-const targetWindow =
+export const targetWindow =
   window.parent === window
     ? iframe?.contentWindow
     : window.parent
