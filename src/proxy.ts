@@ -35,7 +35,9 @@ export const serverProxyFetch = async (_input: Parameters<NativeFetch>[0], _init
       ...rest,
       headers: {
         ...rest.headers,
-        setCookie: rest.headers['set-cookie']
+        ...rest.headers && {
+          setCookie: rest.headers['set-cookie']
+        }
       }
     }
   )
