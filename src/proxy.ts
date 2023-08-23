@@ -2,13 +2,6 @@
 
 import { call } from './utils/call'
 
-export interface fetchInitOptions {
-  proxyCache?: string
-  proxyDelay?: string
-  proxyRuntime?: boolean
-  noProxy?: boolean
-}
-
 export type NativeFetch = typeof globalThis.fetch
 
 export type ProxyFetchRequestInit = Omit<RequestInit, "body" | "headers" | "signal"> & {
@@ -25,7 +18,7 @@ export type FetchInitOptions = {
 
 export type ProxyFetchRequestInfo = string | Omit<Request, "arrayBuffer" | "text" | "headers" | "signal" | "clone" | "blob" | "formData" | "json">
 
-export const serverProxyFetch = async (_input: Parameters<NativeFetch>[0], _init?: Parameters<NativeFetch>[1] & fetchInitOptions) => {
+export const serverProxyFetch = async (_input: Parameters<NativeFetch>[0], _init?: Parameters<NativeFetch>[1]) => {
   const input = _input as ProxyFetchRequestInfo
   const init = _init as ProxyFetchRequestInit & FetchInitOptions
   const { body, ...rest } = await call('SERVER_PROXY_FETCH', { input, init })
