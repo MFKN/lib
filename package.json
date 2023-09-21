@@ -5,8 +5,8 @@
   "types": "build/index.d.ts",
   "type": "module",
   "devDependencies": {
-    "@fkn/webextension": "file:../extension",
-    "@mfkn/fkn-web": "github:MFKN/fkn-web",
+    "@mfkn/web-extension": "git+https://GH_TOKEN@github.com/MFKN/web-extension.git",
+    "@mfkn/fkn-web": "git+https://GH_TOKEN@github.com/MFKN/web.git",
     "concurrently": "^7.6.0",
     "parse-torrent-file": "^4.2.2",
     "typescript": "^4.9.3",
