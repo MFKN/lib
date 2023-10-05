@@ -4,11 +4,10 @@ export {
 } from './proxy'
 
 export {
-  torrent,
-  torrentStatus
+  torrent
 } from './torrent'
 
-export {
-  requestAccess,
-  declarativeNetRequestUpdateDynamicRules
-} from './webextension'
+// export {
+//   requestAccess,
+//   declarativeNetRequestUpdateDynamicRules
+// } from './webextension'
