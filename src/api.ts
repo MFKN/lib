@@ -1,4 +1,6 @@
 import type { SandboxResolvers } from '@mfkn/fkn-web/src/api/sandbox'
+import type { SandboxApiResolvers } from '@mfkn/fkn-web/src/api/resolvers'
+
 import type { Target } from 'osra'
 
 import { call } from 'osra'
@@ -12,6 +14,9 @@ if (!WEB_ORIGIN) throw new Error('Missing "WEB_ORIGIN" environment variable')
 export const setApiTarget = (messagePort: Target | Promise<Target>) => setTarget(messagePort)
 
 export const apiTargetIsReady = () => target
+
+export const getApiTargetPort = async () =>
+  call<SandboxApiResolvers>(await apiTargetIsReady()!, { key: 'fkn-sandbox-api' })('API_PORT', {})
 
 if (!isWorker) {
   if (!targetWindow) throw new Error('Missing target window on non worker thread')
