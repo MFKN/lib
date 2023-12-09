@@ -4,7 +4,8 @@ export {
 } from './proxy'
 
 export {
-  torrent
+  torrent,
+  torrentFile
 } from './torrent'
 
 export {
