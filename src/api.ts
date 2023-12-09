@@ -6,7 +6,7 @@ import type { Target } from 'osra'
 import { call } from 'osra'
 
 import { target, setTarget } from './target'
-import { iframe, foundIframe, targetWindow, isWorker, createdIframe } from './dom'
+import { iframe, foundIframe, targetWindow, isWorker } from './dom'
 
 const WEB_ORIGIN = import.meta.env.VITE_WEB_ORIGIN
 if (!WEB_ORIGIN) throw new Error('Missing "WEB_ORIGIN" environment variable')
@@ -40,6 +40,6 @@ if (!isWorker) {
     hasResolved = true
   })
   setTimeout(() => {
-    if (!hasResolved) console.warn(`@fkn/lib's api target has not resolved after 100ms while in a worker, make sure to call \`setApiTarget(messagePort)\``)
-  }, 100)
+    if (!hasResolved) console.warn(`@fkn/lib's api target has not resolved after 250ms while in a worker, make sure to call \`setApiTarget(messagePort)\``)
+  }, 250)
 }
