@@ -4,16 +4,9 @@ if (!WEB_ORIGIN) throw new Error('Missing "WEB_ORIGIN" environment variable')
 
 export const isWorker = globalThis.window === undefined
 
-export const foundIframe =
-  globalThis
-    .document
-    ?.body
-    .querySelector<HTMLIFrameElement>(`iframe[src="${`${WEB_ORIGIN}/sandbox-api`}"]`)
+export const createdIframe = globalThis.document?.createElement('iframe')
 
-export const createdIframe =
-  !foundIframe
-    ? globalThis.document?.createElement('iframe')
-    : undefined
+export const foundIframe = createdIframe
 
 if (createdIframe) {
   createdIframe.src = `${WEB_ORIGIN}/sandbox-api`
@@ -21,12 +14,6 @@ if (createdIframe) {
   document.body.appendChild(createdIframe)
 }
 
-export const iframe =
-  globalThis.window?.parent === globalThis.window
-    ? foundIframe ?? createdIframe
-    : undefined
+export const iframe = createdIframe
 
-export const targetWindow =
-  globalThis.window?.parent === globalThis.window
-    ? iframe?.contentWindow
-    : globalThis.window?.parent
+export const targetWindow = iframe?.contentWindow

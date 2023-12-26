@@ -1,9 +1,10 @@
 {
   "name": "@fkn/lib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "type": "module",
+  "files": ["build"],
   "devDependencies": {
     "@mfkn/web": "file:../web",
     "@mfkn/web-extension": "git+https://github.com/MFKN/web-extension.git",
