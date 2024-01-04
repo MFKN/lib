@@ -1,6 +1,6 @@
 {
   "name": "@fkn/lib",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "type": "module",
@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "concurrently \"vite build --watch --mode development\" \"tsc --watch\"",
     "build": "vite build && tsc",
+    "build-watch": "vite build --watch --mode production && tsc",
     "build-dev": "vite build --mode development && tsc",
     "dev-watch": "vite build --watch --mode development",
     "build-types": "tsc"

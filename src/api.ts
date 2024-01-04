@@ -20,15 +20,17 @@ export const getApiTargetPort = async () =>
 
 if (!isWorker) {
   if (!iframe) throw new Error('Missing appended iframe')
-  iframe.addEventListener('load', () => {
-    const interval = setInterval(() =>
+  const interval =
+    setInterval(() =>
       call<SandboxResolvers>(targetWindow!, { key: 'fkn-sandbox' })('APP_READY', {})
         .then(() => {
           setTarget(targetWindow!)
           clearInterval(interval)
         })
+        .catch(() => {
+          console.warn('Failed to connect to sandbox, trying again in 10ms')
+        })
     , 10)
-  })
 } else {
   let hasResolved = false
   target.then(() => {
