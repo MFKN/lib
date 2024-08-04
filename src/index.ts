@@ -4,9 +4,8 @@ export {
 } from './proxy'
 
 export {
-  torrent,
-  torrentFile
-} from './torrent'
+  WebVPNWebTransport
+} from './webvpn'
 
 export {
   setApiTarget,

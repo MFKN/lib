@@ -1,16 +1,18 @@
 {
   "name": "@fkn/lib",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "type": "module",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "devDependencies": {
     "@mfkn/web": "file:../web",
     "@mfkn/web-extension": "git+https://github.com/MFKN/web-extension.git",
     "concurrently": "^7.6.0",
     "parse-torrent-file": "^4.2.2",
-    "typescript": "^4.9.3",
+    "typescript": "^5.5.4",
     "vite": "^3.2.5",
     "webextension-polyfill": "^0.10.0"
   },
